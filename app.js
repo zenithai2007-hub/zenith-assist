@@ -126,7 +126,7 @@ function sendUser(text) {
 }
 $('sendbtn').onclick = () => sendUser($('msgin').value);
 $('msgin').addEventListener('keydown', e => { if (e.key === 'Enter') sendUser($('msgin').value); });
-document.querySelectorAll('.qchip').forEach(c => c.onclick = () => {
+document.querySelectorAll('.qpill').forEach(c => c.onclick = () => {
   const t = c.textContent.trim();
   if (/payment/i.test(t)) { addMsg(t, 'user'); reportPaymentIssue(); }
   else if (/order/i.test(t)) { addMsg(t, 'user'); startOrder(); }
