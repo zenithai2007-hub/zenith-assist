@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://zenith-assist.vercel.app/sitemap.xml
