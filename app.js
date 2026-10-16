@@ -119,7 +119,7 @@ document.querySelectorAll('.qchip').forEach(c => c.onclick = () => {
 /* ---------- greeting ---------- */
 window.addEventListener('load', () => {
   setTimeout(() => {
-    const g = 'Assalam-o-Alaikum! 🙌 Main **Assist** hun — Zenith AI ka bolne wala agent. Batao, tumhara business kya hai? Website chahiye ya AI WhatsApp agent?';
+    const g = 'Assalam-o-Alaikum! Hello! 🙌 Main Assist hun — Zenith AI ka bolne wala agent. Batao, what is your business? Website chahiye ya AI WhatsApp agent? Bolo ya likho — dono chalega! 🎤';
     addMsg(g, 'bot');
   }, 600);
 });

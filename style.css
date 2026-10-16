@@ -59,6 +59,13 @@ section h2{text-align:center;font-size:30px;font-weight:900;margin-bottom:8px}
 #speakertgl.on{background:var(--yel)}
 #voicenote{text-align:center;font-size:12px;color:var(--mut);padding:8px;background:#fffdf0;border-top:1px dashed var(--line)}
 
+/* facts/automation/websites */
+#facts{background:#fff;border-top:3px solid var(--ink);border-bottom:3px solid var(--ink);max-width:none}
+#facts h2,#automation h2,#websites h2{margin-bottom:26px}
+#automation,#websites{max-width:800px}
+.bigtext{font-size:18px;line-height:1.8;text-align:center;color:#222}
+.bigtext b{color:var(--ink)}
+
 /* features */
 #features{background:#fffdf0;border-top:3px solid var(--ink);border-bottom:3px solid var(--ink);max-width:none}
 #features h2{margin-bottom:26px}
