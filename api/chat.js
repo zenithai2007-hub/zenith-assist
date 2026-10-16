@@ -28,6 +28,7 @@ function scripted(messages) {
     demo: "You are talking to the demo RIGHT NOW — this IS the product working! What else do you want to ask?",
     thanks: "Anytime! I'm right here — just say the word and we'll start your order. What business is yours?",
     order: "Excellent decision! Just tell me your name and phone number — I'll confirm your order right now!",
+    pay: "I'm sorry to hear that! Tap the payment-issue button below and the founder will be alerted immediately with our full chat. He'll contact you himself.",
     dflt: "Got it! Tell me a bit more — what is your business and how do customers reach you now? Then I'll suggest the perfect solution."
   } : {
     greet: 'Walaikum-Assalam! Main Assist hun. Batao, tumhara business kya hai — website chahiye ya AI agent?',
@@ -37,9 +38,11 @@ function scripted(messages) {
     demo: 'Demo? Tum abhi mujh se baat kar rahe ho — YEHI product hai, live chal raha hai! Aur kya poochna hai?',
     thanks: 'Koi baat nahi! Main yehi hun — bas bolo aur order shuru karte hain. Tumhara business kya hai?',
     order: 'Zabardast faisla! Bas apna naam aur phone number bata do — order abhi confirm kar deta hun!',
+    pay: 'Oh ho! Neeche payment-issue wala button dabao — founder ko foran ittila mil jayegi, poori chat ke saath. Woh khud rabta karega.',
     dflt: 'Samajh gaya! Thora detail batao — business kya hai aur customers abhi kaise raabta karte hain? Phir perfect solution dunga.'
   };
   if (/salam|aoa|hello|\bhi\b|assalam/.test(t)) return R.greet;
+  if (/payment|paisa.*(issue|masla|problem)|pay.*(fail|issue|problem)/.test(t)) return R.pay;
   if (/order|book|lena hai|buy|kharid|interested|deal/.test(t)) return R.order;
   if (/price|cost|fee|pais|rate|charge|mehng/.test(t)) return R.price;
   if (/website|site/.test(t)) return R.web;

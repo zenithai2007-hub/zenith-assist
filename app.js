@@ -85,19 +85,35 @@ function orderNext(text) {
     else { orderStep = 0; addMsg('Koi baat nahi! Jab ready ho, "order" likh dena.', 'bot'); }
   }
 }
+function transcriptText() {
+  return msgs.map(m => (m.role === 'user' ? 'Client' : 'Assist') + ': ' + m.content).join('\n');
+}
 async function submitOrder() {
   orderStep = 0;
   addMsg('Order bhej raha hun… ⏳', 'bot');
   try {
     const r = await fetch('/api/notify', {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(order),
+      body: JSON.stringify({ kind: 'order', transcript: transcriptText(), ...order }),
     });
     const j = await r.json();
     if (j.via === 'mailto' && j.mailto) window.location.href = j.mailto;
-    const done = 'Ho gaya! ✅ Tumhara order founder ko bhej diya. Woh khud rabta karega. Shukriya!';
+    const done = 'Ho gaya! ✅ Tumhara order founder ko bhej diya — poori baat-cheet ke saath. Woh khud rabta karega. Shukriya!';
     addMsg(done, 'bot'); speak(stripEmoji(done));
   } catch (e) { addMsg('Order bhejne mein masla hua — phir try karo.', 'bot'); }
+}
+async function reportPaymentIssue() {
+  addMsg('Founder ko ittila bhej raha hun… ⏳', 'bot');
+  try {
+    const r = await fetch('/api/notify', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ kind: 'payment_issue', transcript: transcriptText(), name: order.name || '-', phone: order.phone || '-' }),
+    });
+    const j = await r.json();
+    if (j.via === 'mailto' && j.mailto) window.location.href = j.mailto;
+    const done = 'Bhej diya! ⚠️ Founder ko payment issue ki ittila mil gayi — woh foran rabta karega.';
+    addMsg(done, 'bot'); speak(stripEmoji(done));
+  } catch (e) { addMsg('Bhejne mein masla hua — phir try karo.', 'bot'); }
 }
 
 function sendUser(text) {
@@ -112,7 +128,8 @@ $('sendbtn').onclick = () => sendUser($('msgin').value);
 $('msgin').addEventListener('keydown', e => { if (e.key === 'Enter') sendUser($('msgin').value); });
 document.querySelectorAll('.qchip').forEach(c => c.onclick = () => {
   const t = c.textContent.trim();
-  if (/order/i.test(t)) { addMsg(t, 'user'); startOrder(); }
+  if (/payment/i.test(t)) { addMsg(t, 'user'); reportPaymentIssue(); }
+  else if (/order/i.test(t)) { addMsg(t, 'user'); startOrder(); }
   else sendUser(t);
 });
 

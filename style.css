@@ -66,6 +66,20 @@ section h2{text-align:center;font-size:30px;font-weight:900;margin-bottom:8px}
 .bigtext{font-size:18px;line-height:1.8;text-align:center;color:#222}
 .bigtext b{color:var(--ink)}
 
+/* proof banner */
+.proof{max-width:620px;margin:0 auto 18px;background:#111;color:#fff;border-radius:14px;padding:13px 18px;font-size:13.5px;text-align:center;border:2px solid var(--yel)}
+.proof b{color:var(--yel)}
+
+/* pricing + faq */
+#pricing{background:#fffdf0;border-top:3px solid var(--ink);border-bottom:3px solid var(--ink);max-width:none}
+#pricing .steps{max-width:1000px;margin:24px auto 0}
+.faqlist{max-width:680px;margin:0 auto;display:flex;flex-direction:column;gap:10px}
+.faqlist details{background:#fff;border:2px solid var(--ink);border-radius:14px;padding:14px 18px;cursor:pointer}
+.faqlist details[open]{background:#fffdf0}
+.faqlist summary{font-weight:800;font-size:15px}
+.faqlist p{margin-top:10px;font-size:14px;color:#333}
+footer .btn.white{border-color:#fff}
+
 /* features */
 #features{background:#fffdf0;border-top:3px solid var(--ink);border-bottom:3px solid var(--ink);max-width:none}
 #features h2{margin-bottom:26px}
